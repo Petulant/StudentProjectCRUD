@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+<div class="container at-3" >
+  <h3>Update Details</h3>
+  <hr class="my-4">
+<form action="/update/{{groupproject.id}}" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+          <label for="">ID</label>
+          <input type="text"name="pid" value="{{groupproject.pid}}" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="">projectName</label>
+        <input type="text"name="projectName" value="{{groupproject.projectName}}"class="form-control">
+      </div>
+    <div class="form-group">
+        <label for="">Uploaded By</label>
+        <input type="text" name="uploadedBy"value="{{groupproject.uploadedBy}}"class="form-control">
+    </div>
+    <div class="form-group">
+<label for="">Submission Date</label>
+        <input type="text" name="subDate" value="{{groupproject.subDate}}" class="form-control">
+    </div><br>
+    <div class="form-group">
+    <button type="submit" class="btn btn-success"><i class="fas fa-database"></i> Update Record</button>
+    <a href="{% url 'showlist'%}" class="btn btn-primary">Show ProjectList</a>
+   </div>
+</form>
+</div>
+ {% endblock content %}

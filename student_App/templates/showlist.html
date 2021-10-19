@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+<div class="container at-3" >
+   
+   <h4>List of Projects</h4>
+   <a href="{% url 'projectForm' %}" class="btn btn-primary">Add Project</a>
+   <hr>
+   <table class="table">
+       <thead>
+           <tr>
+               <th>ID</th>
+               <th>ProjectName</th>
+               <th>UploadedBy</th>
+               <th>Date</th>
+               <th>Action</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for g in groupproject  %}
+           <tr>
+               <td>{{g.pid}}</td>
+               <td>{{g.projectName}}</td>
+               <td>{{g.uploadedBy}}</td>
+               <td>{{g.subDate}}</td>
+               <td>
+                   <a href="{% url 'update' g.id %}" class="btn btn-primary">Edit</a>
+                   <a onclick="return confirm('Are you sure to delete?')" href="delete/{{g.id}}"  class="btn btn-danger">Delete</a>
+               </td>
+           </tr>
+
+           {% endfor %}
+       </tbody>
+   </table>
+
+</div>
+ {% endblock content %}
